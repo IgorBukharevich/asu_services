@@ -17,7 +17,7 @@ class ArmAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Основная информация', {'fields': (
-            'title', 'slug', 'ip_addr',
+            'num_arm', 'slug', 'ip_addr',
             'department', 'publish_status'
         )}),
         ('Описание', {'fields': ('description', )})

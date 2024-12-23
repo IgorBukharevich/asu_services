@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'modules.services',
 
     'debug_toolbar',
+    'mptt',
 ]
 
 MIDDLEWARE = [

@@ -1,13 +1,15 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from mptt.fields import TreeForeignKey
+from mptt.models import MPTTModel
 
 from modules.services.utils import unique_slugify
+
 
 User = get_user_model()
 
 
-class Department(models.Model):
+class Department(MPTTModel):
     """Модель Подразделений"""
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
@@ -46,6 +48,7 @@ class Department(models.Model):
     )
     time_update = models.DateTimeField(
         verbose_name='Дата обновления',
+        auto_now=True,
     )
     author = models.ForeignKey(
         to=User,
@@ -96,6 +99,9 @@ class Arm(models.Model):
 
     num_arm = models.PositiveIntegerField(
         verbose_name='АРМ',
+        unique=True,
+        blank=True,
+        null=True,
     )
     slug = models.SlugField(
         verbose_name='Slug',
@@ -126,6 +132,7 @@ class Arm(models.Model):
     )
     time_update = models.DateTimeField(
         verbose_name='Дата обновления',
+        auto_now=True,
     )
     author = models.ForeignKey(
         to=User,
@@ -157,7 +164,7 @@ class Arm(models.Model):
         verbose_name_plural = 'АРМы'
 
     def __str__(self):
-        return self.num_arm
+        return f'{self.num_arm}'
 
     def save(self, *args, **kwargs):
         """Сохранение полей модели при их отсутствии"""
