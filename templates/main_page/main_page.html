@@ -1,0 +1,107 @@
+{% extends 'index.html' %}
+
+
+{% load static %}
+{% block content %}
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Добро пожаловать в {{ title_asu.title }}</h1>
+            <p class="lead">{{ title_asu.shor_description }}</p>
+            <a href="#services" class="btn btn-light btn-lg">Узнать больше</a>
+            <div class="mt-4">
+                <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-5">
+        <section id="services">
+            <h2 class="display-5">Наша команда</h2>
+            <div class="row">
+                {% for task in tasks_asu %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ task.title }}</h5>
+                            <p class="card-text">{{ task.short_description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="about" class="mt-5">
+            <h2 class="display-5">О нас</h2>
+            <p>
+                АСУ — это команда профессионалов, стремящихся обеспечить надежную работу ваших информационных систем.
+                Мы предлагаем индивидуальные решения, соответствующие вашим потребностям.
+            </p>
+        </section>
+
+        <section id="contact" class="mt-5">
+            <h2 class="display-5">Контакты</h2>
+            <p>Свяжитесь с нами для получения дополнительной информации:</p>
+            <ul>
+                <li>Телефон: +375 (29) 138-76-01</li>
+                <li>Email: <a href="mailto:support@asu.ru">asucrb@soligorskcrb.by</a></li>
+            </ul>
+        </section>
+    </div>
+    <!-- Модальное окно для входа -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email адрес</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Пароль</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для регистрации -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Регистрация</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Имя</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email адрес</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Пароль</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'main_p/main_p.js' %}"></script>
+{% endblock %}

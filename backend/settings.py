@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'modules.main_page.apps.MainPageConfig',
+    'modules.arm.apps.ArmConfig',
+
+    'modules.services',
 
     'debug_toolbar',
 ]

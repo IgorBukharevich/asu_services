@@ -15,6 +15,7 @@ class TaskMPAsuAdmin(admin.ModelAdmin):
         ('Описание', {'fields': ('short_description', )})
     )
 
+
 @admin.register(TitleMainPage)
 class TitleMainPageAdmin(admin.ModelAdmin):
     """Админ-панель модели Заголовки Главной страницы"""
