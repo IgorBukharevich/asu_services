@@ -19,11 +19,11 @@ class TaskMPAsuAdmin(admin.ModelAdmin):
 @admin.register(TitleMainPage)
 class TitleMainPageAdmin(admin.ModelAdmin):
     """Админ-панель модели Заголовки Главной страницы"""
-    list_display = ('id', 'title', 'slug', 'time_create', 'time_update', 'publish_status')
+    list_display = ('id', 'title', 'slug', 'time_create', 'time_update', 'publish_status', 'fixed')
     list_display_links = ('title', 'slug')
     prepopulated_fields = {'slug': ('title', )}
 
     fieldsets = (
-        ('Основная информация', {'fields': ('title', 'slug', 'publish_status')}),
+        ('Основная информация', {'fields': ('title', 'slug', 'publish_status', 'fixed')}),
         ('Описание', {'fields': ('short_description', )})
     )
