@@ -1,0 +1,134 @@
+{% extends 'index.html' %}
+
+
+{% load static %}
+{% block content %}
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Добро пожаловать в Отдел автоматизированных систем управления (АСУ)</h1>
+            <p class="lead">{{ title_asu.shor_description }}</p>
+            <a href="#services" class="btn btn-light btn-lg">Узнать больше</a>
+            <div class="mt-4">
+                <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+    <h2 class="text-center">Наша команда</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="team-member">
+                <h4>Техник-электроник</h4>
+                <p>Наши техники-электронщики — эксперты в электронике и автоматизации. Они проектируют, устанавливают и обслуживают электронные системы, обеспечивая стабильную работу автоматизированных процессов.</p>
+                <h5>Основные обязанности:</h5>
+                <ul>
+                    <li>Проектирование и настройка электронных схем</li>
+                    <li>Обслуживание и ремонт оборудования</li>
+                    <li>Тестирование и внедрение новых технологий</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="team-member">
+                <h4>Администратор сетей</h4>
+                <p>Администраторы сетей обеспечивают бесперебойную работу сетевой инфраструктуры. Они настраивают, мониторят и защищают сети, решая возникающие проблемы.</p>
+                <h5>Основные обязанности:</h5>
+                <ul>
+                    <li>Настройка и управление сетевым оборудованием</li>
+                    <li>Мониторинг и анализ сетевого трафика</li>
+                    <li>Обеспечение безопасности сетевой инфраструктуры</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="team-member">
+                <h4>Специалист по сопровождению ПО</h4>
+                <p>Специалисты по сопровождению ПО поддерживают и развивают программные решения, устраняя ошибки и обучая пользователей.</p>
+                <h5>Основные обязанности:</h5>
+                <ul>
+                    <li>Поддержка и обновление программного обеспечения</li>
+                    <li>Устранение неисправностей и ошибок</li>
+                    <li>Обучение и консультирование пользователей</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        <section id="about" class="mt-5">
+            <h2 class="display-5">О нас</h2>
+            <p>
+                АСУ — это команда профессионалов, стремящихся обеспечить надежную работу ваших информационных систем.
+                Мы предлагаем индивидуальные решения, соответствующие вашим потребностям.
+            </p>
+        </section>
+
+        <section id="contact" class="mt-5">
+            <h2 class="display-5">Контакты</h2>
+            <p>Свяжитесь с нами для получения дополнительной информации:</p>
+            <ul>
+                <li>Телефон: +375 (29) 138-76-01</li>
+                <li>Email: <a href="mailto:support@asu.ru">asucrb@soligorskcrb.by</a></li>
+            </ul>
+        </section>
+    </div>
+    <!-- Модальное окно для входа -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email адрес</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Пароль</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для регистрации -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Регистрация</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Имя</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email адрес</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Пароль</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'main_p/main_p.js' %}"></script>
+{% endblock %}
