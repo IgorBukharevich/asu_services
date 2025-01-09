@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>АРМ</th>
+            <th>IP-адрес/а</th>
+            <th>Подразделение</th>
+            <th>Описание</th>
+            <th>Автор</th>
+            <th>Время добавления</th>
+            <th>Время обновления</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for arm in arm_list %}
+        <tr>
+            <td>{{ arm.num_arm }}</td>
+            <td>{{ arm.ip_addr }}</td>
+            <td>{{ arm.department }}</td>
+            <td>{{ arm.description }}</td>
+            <td>{{ arm.author }}</td>
+            <td>{{ arm.time_create }}</td>
+            <td>{{ arm.time_update }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
