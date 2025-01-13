@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<a href="{% url 'arm_create' %}" class="btn btn-outline-primary"><i class="fas fa-info-circle"></i> Добавить запись</a>
   <table id="myTable" class="display">
     <thead>
         <tr>
@@ -11,6 +12,7 @@
             <th>Автор</th>
             <th>Время добавления</th>
             <th>Время обновления</th>
+            <th>Действия</th>
 
         </tr>
     </thead>
@@ -24,6 +26,11 @@
             <td>{{ arm.author }}</td>
             <td>{{ arm.time_create }}</td>
             <td>{{ arm.time_update }}</td>
+            <td class="btn-group">
+                <a href="{% url 'arm_update' arm.slug %}" class="btn btn-outline-primary"><i class="fas fa-edit"></i> Редактировать</a>
+                <a href="{% url 'arm_delete' arm.slug %}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Удалить</a>
+                <a href="{% url 'arm_detail' arm.slug %}" class="btn btn-outline-info"><i class="fas fa-info-circle"></i> Подробнее</a>
+            </td>
         </tr>
     {% endfor %}
     </tbody>

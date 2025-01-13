@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.template.base import kwarg_re
+from django.urls import reverse
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
@@ -11,10 +13,17 @@ User = get_user_model()
 
 class Department(MPTTModel):
     """Модель Подразделений"""
+
+    class DepartmentManager(models.Manager):
+        def all(self):
+            return self.get_queryset().select_related('author').filter(status='published')
+
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
         ('draft', 'Черновик')
     )
+
+    objects = DepartmentManager()
 
     title = models.CharField(
         verbose_name='Заголовок',
@@ -65,6 +74,12 @@ class Department(MPTTModel):
         blank=True,
         related_name='updater_dep',
     )
+    status = models.CharField(
+        verbose_name='Статус',
+        choices=STATUS_OPTIONS,
+        default='published',
+        max_length=10,
+    )
     fixed = models.BooleanField(
         verbose_name='Зафиксировано',
         default=False,
@@ -83,6 +98,9 @@ class Department(MPTTModel):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('depart_detail', kwargs={'slug': self.slug})
+
     def save(self, *args, **kwargs):
         """Сохранение полей модели при их отсутствии"""
         if not self.slug:
@@ -92,10 +110,22 @@ class Department(MPTTModel):
 
 class Arm(models.Model):
     """Модель АРМ"""
+    class ArmManager(models.Manager):
+        """Кастомный менеджер для модели АРМ"""
+
+        def all(self):
+            """
+            Список статей (SQL запрос с фильтрацией для страницы списка статей)
+            """
+            return self.get_queryset().select_related('author', 'department').filter(
+                    status='published')
+
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
         ('draft', 'Черновик')
     )
+
+    objects = ArmManager()
 
     num_arm = models.PositiveIntegerField(
         verbose_name='АРМ',
@@ -141,6 +171,7 @@ class Arm(models.Model):
         default=1,
         related_name='authro_arm_add',
     )
+
     updater = models.ForeignKey(
         to=User,
         verbose_name='Обновил',
@@ -148,6 +179,12 @@ class Arm(models.Model):
         null=True,
         blank=True,
         related_name='updater_arm',
+    )
+    status = models.CharField(
+        verbose_name='Статус',
+        choices=STATUS_OPTIONS,
+        default='published',
+        max_length=10,
     )
     fixed = models.BooleanField(
         verbose_name='Зафиксировано',
@@ -165,6 +202,9 @@ class Arm(models.Model):
 
     def __str__(self):
         return f'{self.num_arm}'
+
+    def get_absolute_url(self):
+        return reverse('arm_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
         """Сохранение полей модели при их отсутствии"""
