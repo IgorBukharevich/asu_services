@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('modules.main_page.urls')),
     path('', include('modules.arm.urls')),
+    path('', include('modules.about.urls')),
+    path('', include('modules.faq.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,122 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+
+      <div class="container mt-5">
+        <h1 class="display-4">Часто задаваемые вопросы (FAQ)</h1>
+        <hr>
+        <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingGeneral">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral" aria-expanded="true" aria-controls="collapseGeneral">
+                        Общие вопросы
+                    </button>
+                </h2>
+                <div id="collapseGeneral" class="accordion-collapse collapse show" aria-labelledby="headingGeneral" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>Что такое АСУ?</strong>
+                        <p>АСУ — это Администратор сетей, техник-электроник, специалист сопровождение ПО. Мы предоставляем комплексную поддержку для компьютерных сетей, электронных устройств и программного обеспечения.</p>
+                        <strong>Какие услуги вы предлагаете?</strong>
+                        <ul>
+                            <li>Администрирование и обслуживание сетей</li>
+                            <li>Ремонт и обслуживание электронных устройств</li>
+                            <li>Поддержка и устранение неполадок программного обеспечения</li>
+                            <li>Разработка и интеграция программного обеспечения на заказ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingNetwork">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNetwork" aria-expanded="false" aria-controls="collapseNetwork">
+                        Вопросы по администрированию сетей
+                    </button>
+                </h2>
+                <div id="collapseNetwork" class="accordion-collapse collapse" aria-labelledby="headingNetwork" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>Как сбросить пароль сети?</strong>
+                        <p>Чтобы сбросить пароль сети, выполните следующие шаги:</p>
+                        <ol>
+                            <li>Перейдите на страницу сброса пароля.</li>
+                            <li>Введите ваше имя пользователя и текущий пароль.</li>
+                            <li>Введите новый пароль и подтвердите его.</li>
+                            <li>Нажмите кнопку "Сбросить пароль".</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingDevices">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDevices" aria-expanded="false" aria-controls="collapseDevices">
+                        Вопросы по ремонту электронных устройств
+                    </button>
+                </h2>
+                <div id="collapseDevices" class="accordion-collapse collapse" aria-labelledby="headingDevices" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>Как я могу устранить неполадки устройства?</strong>
+                        <p>Попробуйте выполнить следующие шаги:</p>
+                        <ol>
+                            <li>Перезагрузите устройство.</li>
+                            <li>Проверьте наличие разъемов и соединений.</li>
+                            <li>Проверьте наличие обновлений программного обеспечения.</li>
+                            <li>Свяжитесь с нашей службой поддержки для дальнейшей помощи.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSoftware">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSoftware" aria-expanded="false" aria-controls="collapseSoftware">
+                        Вопросы по поддержке программного обеспечения
+                    </button>
+                </h2>
+                <div id="collapseSoftware" class="accordion-collapse collapse" aria-labelledby="headingSoftware" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>Как я могу запросить поддержку по программному обеспечению?</strong>
+                        <p>Чтобы запросить поддержку, выполните следующие шаги:</p>
+                        <ol>
+                            <li>Перейдите на страницу запроса поддержки.</li>
+                            <li>Заполните форму запроса.</li>
+                            <li>Предоставьте подробную информацию о возникшей проблеме.</li>
+                            <li>Нажмите кнопку "Отправить".</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingContact">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContact" aria-expanded="false" aria-controls="collapseContact">
+                        Контакты
+                    </button>
+                </h2>
+                <div id="collapseContact" class="accordion-collapse collapse" aria-labelledby="headingContact" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        <strong>Как я могу связаться с АСУ?</strong>
+                        <p>Вы можете связаться с нами по следующим каналам:</p>
+                        <ul>
+                            <li>Телефон: +375 (29) 138-76-01</li>
+                            <li>Email: <a href="mailto:support@asu.ru">asucrb@soligorskcrb.by</a></li>
+<!--                            <li>Онлайн-чат: доступен на нашем сайте</li>-->
+                        </ul>
+                        <strong>Каковы ваши часы работы?</strong>
+                        <p>Наши часы работы:</p>
+                        <ul>
+                            <li>Понедельник - Пятница: 8:00 - 17:00 </li>
+                            <li>Суббота - Воскресенье: выходные</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="{% static 'faq/faq.js' %}"></script>
+
+
+{% endblock %}

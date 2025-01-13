@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
     'modules.main_page.apps.MainPageConfig',
     'modules.arm.apps.ArmConfig',
+    'modules.about.apps.AboutConfig',
+    'modules.faq.apps.FaqConfig',
 
     'modules.services',
 
