@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'modules.arm.apps.ArmConfig',
     'modules.about.apps.AboutConfig',
     'modules.faq.apps.FaqConfig',
+    'modules.asu_task.apps.AsuTaskConfig',
 
     'modules.services',
 

@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+<a href="{% url 'task_create' %}" class="btn btn-outline-primary"><i class="fas fa-info-circle"></i> Добавить запись</a>
+  <table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>Номер заявки</th>
+            <th>Автор</th>
+            <th>Статус заявки</th>
+            <th>Подразделение</th>
+            <th>Описание</th>
+            <th>Время добавления</th>
+            <th>Время обновления</th>
+            <th>Обновил</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for task in task_list %}
+        <tr>
+            <td>{{ task.task_num }}</td>
+            <td>{{ task.author }}</td>
+            <td>{{ task.status_task }}</td>
+            <td>{{ task.department }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.time_create }}</td>
+            <td>{{ task.time_update }}</td>
+            <td>{{ task.updater }}</td>
+            <td class="btn group">
+                <a href="{% url 'task_update' task.slug %}"  title="Редактировать"><i class="fas fa-edit"><img class="btn-edit" width="24px;" src="{% static 'buttons/edit.png' %}"></i></a>
+                <a href="{% url 'task_delete' task.slug %}" title="Удалить"><i class="fas fa-trash-alt"><img class="btn-edit" width="24px;" src="{% static 'buttons/delete.png' %}"></i></a>
+                <a href="{% url 'task_detail' task.slug %}" title="Подробнее"><i class="fas fa-info-circle"><img class="btn-edit" width="24px;" src="{% static 'buttons/view.png' %}"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,14 +1,14 @@
 from django import forms
 
-from .models import Arm
+from .models import Task
 
 
-class ArmCreateForm(forms.ModelForm):
+class TaskCreateForm(forms.ModelForm):
     """Форма добавления АРМ на сайт"""
     class Meta:
-        model = Arm
+        model = Task
         fields = (
-            'num_arm', 'ip_addr', 'department', 'description', 'publish_status'
+            'task_num', 'author', 'department', 'description', 'publish_status'
         )
 
     def __init__(self, *args, **kwargs):
@@ -21,11 +21,11 @@ class ArmCreateForm(forms.ModelForm):
             })
 
 
-class ArmUpdateForm(ArmCreateForm):
+class TaskUpdateForm(TaskCreateForm):
     """Форма обновления АРМ на сайте"""
     class Meta:
-        model = Arm
-        fields = ArmCreateForm.Meta.fields + ('fixed',)
+        model = Task
+        fields = TaskCreateForm.Meta.fields + ('fixed',)
 
     def __init__(self, *args, **kwargs):
         """Обновление стилей формы под Bootstrap"""

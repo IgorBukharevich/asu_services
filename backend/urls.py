@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('modules.arm.urls')),
     path('', include('modules.about.urls')),
     path('', include('modules.faq.urls')),
+    path('', include('modules.asu_task.urls')),
 ]
 
 if settings.DEBUG:

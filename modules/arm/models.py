@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.template.base import kwarg_re
 from django.urls import reverse
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
@@ -16,7 +15,7 @@ class Department(MPTTModel):
 
     class DepartmentManager(models.Manager):
         def all(self):
-            return self.get_queryset().select_related('author').filter(status='published')
+            return self.get_queryset().select_related('author').filter(publish_status='published')
 
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
@@ -115,10 +114,10 @@ class Arm(models.Model):
 
         def all(self):
             """
-            Список статей (SQL запрос с фильтрацией для страницы списка статей)
+            Список статей (SQL запрос с фильтрацией для страницы списка АРМов)
             """
             return self.get_queryset().select_related('author', 'department').filter(
-                    status='published')
+                    publish_status='published')
 
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
@@ -136,6 +135,8 @@ class Arm(models.Model):
     slug = models.SlugField(
         verbose_name='Slug',
         max_length=255,
+        unique=True,
+        blank=True,
     )
     ip_addr = models.TextField(
         verbose_name='IP-адрес/а',
@@ -171,7 +172,6 @@ class Arm(models.Model):
         default=1,
         related_name='authro_arm_add',
     )
-
     updater = models.ForeignKey(
         to=User,
         verbose_name='Обновил',
@@ -179,12 +179,6 @@ class Arm(models.Model):
         null=True,
         blank=True,
         related_name='updater_arm',
-    )
-    status = models.CharField(
-        verbose_name='Статус',
-        choices=STATUS_OPTIONS,
-        default='published',
-        max_length=10,
     )
     fixed = models.BooleanField(
         verbose_name='Зафиксировано',

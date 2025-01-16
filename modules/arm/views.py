@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import ArmCreateForm, ArmUpdateForm
-from .models import Arm, Department
+from .models import Arm
 
 
 class ArmListView(ListView):
