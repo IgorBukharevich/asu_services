@@ -25,7 +25,7 @@ class TaskUpdateForm(TaskCreateForm):
     """Форма обновления АРМ на сайте"""
     class Meta:
         model = Task
-        fields = TaskCreateForm.Meta.fields + ('fixed',)
+        fields = TaskCreateForm.Meta.fields + ('fixed', 'status_task',)
 
     def __init__(self, *args, **kwargs):
         """Обновление стилей формы под Bootstrap"""
